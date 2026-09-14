@@ -22,40 +22,26 @@
   html{ scroll-behavior:smooth; scroll-padding-top:70px; }
   body{ margin:0; background:var(--bg); color:var(--ink); font-family:var(--mono); font-size:14px;
         line-height:1.7; -webkit-font-smoothing:none; overflow-x:hidden; }
-
-  /* scanlines overlay */
   body::before{ content:""; position:fixed; inset:0; z-index:100; pointer-events:none;
     background:repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.15) 2px, rgba(0,0,0,.15) 4px); }
-
-  /* pixel dot bg */
   body::after{ content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
     background-image:radial-gradient(rgba(255,255,255,.04) 1px, transparent 1px); background-size:20px 20px; }
-
   a{ color:inherit; text-decoration:none; }
   img{ max-width:100%; display:block; image-rendering:auto; }
   ::selection{ background:var(--green); color:#000; }
   .wrap{ max-width:var(--maxw); margin:0 auto; padding-inline:var(--gut); position:relative; z-index:1; }
-
   h1,h2,h3{ font-family:var(--px); font-weight:400; line-height:1.3; margin:0; }
-
-  /* pixel border utility */
   .px-box{ position:relative; border:3px solid var(--c,var(--green));
     box-shadow: inset 0 0 0 1px rgba(0,0,0,.5), 0 0 0 1px var(--c,var(--green)), 4px 4px 0 var(--c,var(--green)); }
   .px-box::before{ content:""; position:absolute; top:-7px; left:-7px; width:7px; height:7px; background:var(--c,var(--green)); }
   .px-box::after{  content:""; position:absolute; bottom:-7px; right:-7px; width:7px; height:7px; background:var(--c,var(--green)); }
-
-  /* blinking cursor */
   @keyframes blink{ 0%,100%{opacity:1} 49%{opacity:1} 50%{opacity:0} }
   .cursor{ display:inline-block; width:12px; height:3px; background:var(--green); animation:blink 1s step-end infinite; vertical-align:middle; margin-left:4px; }
-
-  /* pill / tag */
   .tag{ display:inline-block; font-family:var(--px); font-size:7px; padding:5px 9px;
         border:2px solid; border-radius:0; letter-spacing:.04em; }
   .tag.g{ color:var(--green); border-color:var(--green); } .tag.c{ color:var(--cyan); border-color:var(--cyan); }
   .tag.y{ color:var(--yellow); border-color:var(--yellow); } .tag.p{ color:var(--pink); border-color:var(--pink); }
   .tag.o{ color:var(--orange); border-color:var(--orange); }
-
-  /* btn */
   .btn{ display:inline-flex; align-items:center; gap:.6em; font-family:var(--px); font-size:8px;
         padding:12px 20px; border:3px solid; cursor:pointer; position:relative;
         transition:transform .1s ease, box-shadow .1s ease; letter-spacing:.04em; }
@@ -67,7 +53,7 @@
   .btn.c{ color:var(--cyan); border-color:var(--cyan); } .btn.c::after{ border-color:var(--cyan); }
   a:focus-visible, .btn:focus-visible{ outline:3px solid var(--green); outline-offset:3px; }
 
-  /* ── NAV ── */
+  /* NAV */
   header.nav{ position:sticky; top:0; z-index:60; background:rgba(13,13,15,.92);
     backdrop-filter:blur(6px); border-bottom:2px solid var(--green);
     box-shadow:0 2px 0 rgba(57,255,110,.2); }
@@ -81,7 +67,7 @@
   .nav-links a.lk.active::before{ opacity:1; }
   @media (max-width:680px){ .nav-links a.lk{ display:none; } }
 
-  /* ── HERO ── */
+  /* HERO */
   .hero{ padding-top:clamp(48px,8vw,96px); padding-bottom:clamp(48px,8vw,96px); }
   .hero-grid{ display:grid; grid-template-columns:1.2fr .8fr; gap:48px; align-items:center; }
   .lv{ font-family:var(--px); font-size:9px; color:var(--green); letter-spacing:.1em; margin-bottom:18px; }
@@ -96,14 +82,14 @@
   .stat-item .l{ font-size:11px; color:var(--ink3); margin-top:4px; font-family:var(--mono); }
   @media (max-width:760px){ .hero-grid{ grid-template-columns:1fr; } }
 
-  /* ── SECTIONS ── */
+  /* SECTIONS */
   section{ padding-block:clamp(56px,8vw,96px); position:relative; z-index:1; }
   .sec-head{ margin-bottom:clamp(32px,4vw,56px); }
   .sec-no{ font-family:var(--px); font-size:9px; color:var(--green); letter-spacing:.1em; display:flex; align-items:center; gap:12px; margin-bottom:10px; }
   .sec-no::after{ content:""; flex:1; height:2px; background:var(--green); opacity:.3; max-width:200px; }
   .sec-head h2{ font-size:clamp(16px,2.5vw,26px); }
 
-  /* ── GAMES ── */
+  /* GAMES */
   .games{ background:var(--bg2); }
   .game{ padding-block:clamp(36px,5vw,60px); border-top:2px solid var(--line); }
   .game:first-of-type{ border-top:0; padding-top:0; }
@@ -114,11 +100,9 @@
   .game .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:18px; }
   .pblk{ display:grid; grid-template-columns:74px 1fr; gap:10px; margin-bottom:10px; }
   .pblk .l{ font-family:var(--px); font-size:7px; letter-spacing:.06em; text-transform:uppercase; color:var(--green); padding-top:4px; }
-  .pblk.c .l{ color:var(--cyan); } .pblk.y .l{ color:var(--yellow); } .pblk.p .l{ color:var(--pink); }
+  .pblk.c .l{ color:var(--cyan); } .pblk.y .l{ color:var(--yellow); } .pblk.p .l{ color:var(--pink); } .pblk.o .l{ color:var(--orange); }
   .pblk p{ margin:0; font-size:13px; color:var(--ink2); }
   @media (max-width:520px){ .pblk{ grid-template-columns:1fr; gap:2px; } }
-
-  /* media frame */
   .game-media .frame-wrap{ position:relative; }
   .shot{ width:100%; aspect-ratio:16/9; background:var(--panel); display:grid; place-items:center; overflow:hidden; position:relative; }
   .shot.tall{ aspect-ratio:4/3; }
@@ -128,14 +112,13 @@
   .shot .ph .g{ font-family:var(--px); font-size:16px; margin-bottom:10px; }
   .shot .ph code{ font-size:11px; color:var(--ink3); display:block; margin-top:8px; word-break:break-all; }
   .shot .ph .hint{ font-size:11px; color:var(--ink2); margin-top:6px; }
-  /* pixel corner decorations */
   .frame-wrap::before,.frame-wrap::after{ content:""; position:absolute; width:12px; height:12px; z-index:2; }
   .frame-wrap::before{ top:0; left:0; border-top:3px solid var(--fc,var(--green)); border-left:3px solid var(--fc,var(--green)); }
   .frame-wrap::after{ bottom:0; right:0; border-bottom:3px solid var(--fc,var(--green)); border-right:3px solid var(--fc,var(--green)); }
   .frame-label{ font-family:var(--px); font-size:7px; padding:5px 10px; display:inline-block; margin-top:10px; }
   @media (max-width:760px){ .game-grid,.game.flip .game-grid{ grid-template-columns:1fr; } .game.flip .game-media{ order:0; } }
 
-  /* ── SKILLS ── */
+  /* SKILLS */
   .skills-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(14px,2vw,22px); }
   .skill-card{ background:var(--bg2); padding:24px; border:2px solid var(--line); transition:border-color .2s, transform .2s; }
   .skill-card:hover{ border-color:var(--green); transform:translateY(-3px); }
@@ -152,7 +135,7 @@
   .skill-card.y:hover{ border-color:var(--yellow); }
   @media (max-width:780px){ .skills-grid{ grid-template-columns:1fr; } }
 
-  /* ── ABOUT ── */
+  /* ABOUT */
   .about{ background:var(--bg2); }
   .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:clamp(28px,5vw,64px); align-items:start; }
   .about-left .ava{ width:min(240px,80vw); margin-bottom:18px; }
@@ -167,7 +150,7 @@
   .principle p{ margin:0; font-size:13px; color:var(--ink2); }
   @media (max-width:760px){ .about-grid{ grid-template-columns:1fr; } }
 
-  /* ── CONTACT / FOOTER ── */
+  /* FOOTER */
   .foot{ text-align:center; }
   .insert-coin{ font-family:var(--px); font-size:clamp(10px,2vw,16px); color:var(--yellow); margin-bottom:6px; }
   @keyframes coinblink{ 0%,100%{opacity:1} 50%{opacity:0} }
@@ -181,13 +164,13 @@
   .foot-links .k{ color:var(--ink3); font-size:10px; }
   .score{ font-family:var(--px); font-size:8px; color:var(--ink3); margin-top:24px; }
 
-  /* ── DRAG STICKERS ── */
+  /* DRAG */
   .drag{ position:fixed; z-index:50; cursor:grab; touch-action:none; user-select:none; }
   .drag:active{ cursor:grabbing; }
   .px-sticker{ font-family:var(--px); font-size:8px; padding:8px 12px; border:3px solid;
                box-shadow:3px 3px 0; background:var(--bg); }
 
-  /* ── REVEAL ── */
+  /* REVEAL */
   .rv{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s cubic-bezier(.2,.7,.2,1); }
   .rv.in{ opacity:1; transform:none; }
   @media (prefers-reduced-motion:reduce){
@@ -198,12 +181,10 @@
 </head>
 <body>
 
-<!-- draggable stickers -->
-<div class="drag" id="d1" style="left:82%;top:130px;"><span class="px-sticker" style="color:var(--green);border-color:var(--green);box-shadow-color:var(--green)">PRESS START</span></div>
+<div class="drag" id="d1" style="left:82%;top:130px;"><span class="px-sticker" style="color:var(--green);border-color:var(--green)">PRESS START</span></div>
 <div class="drag" id="d2" style="left:5%;top:320px;"><span class="px-sticker" style="color:var(--yellow);border-color:var(--yellow)">1UP ▲</span></div>
 <div class="drag" id="d3" style="left:88%;top:58%;"><span class="px-sticker" style="color:var(--pink);border-color:var(--pink)">♥ ♥ ♥</span></div>
 
-<!-- ═══ NAV ═══ -->
 <header class="nav" id="nav">
   <div class="wrap nav-in">
     <a class="brand" href="#top"><span class="ico">🎮</span> HOORISH.DEV</a>
@@ -219,7 +200,7 @@
 
 <main id="top">
 
-  <!-- ═══ HERO ═══ -->
+  <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -227,24 +208,23 @@
         <h1>UNITY DEVELOPER<br>&amp; <span>GAME DESIGNER</span><span class="cursor"></span></h1>
         <p class="hero-lead">
           I build games from scratch — <b>design, code, and ship.</b> Computer Systems Engineering
-          graduate from UET Peshawar. Four shipped Unity titles and counting.
+          graduate from UET Peshawar. Six shipped projects and counting.
         </p>
         <div class="hero-cta">
           <a class="btn g" href="#games">VIEW GAMES →</a>
           <a class="btn c" href="#contact">SAY HI ✦</a>
         </div>
       </div>
-
       <div class="stat-box rv">
-        <div class="stat-item"><div class="n">4+</div><div class="l">// shipped games</div></div>
+        <div class="stat-item"><div class="n">6+</div><div class="l">// shipped projects</div></div>
         <div class="stat-item"><div class="n">C#</div><div class="l">// primary lang</div></div>
         <div class="stat-item"><div class="n">3D</div><div class="l">// + 2D titles</div></div>
-        <div class="stat-item"><div class="n">AI</div><div class="l">// enemy behavior</div></div>
+        <div class="stat-item"><div class="n">AI</div><div class="l">// enemy + ML</div></div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ GAMES ═══ -->
+  <!-- GAMES -->
   <section class="games" id="games">
     <div class="wrap">
       <div class="sec-head rv">
@@ -300,28 +280,16 @@
         </div>
       </article>
 
-      <!-- Flappy Flight / Space Jump -->
-      <article class="game flip rv">
-        <div style="max-width:600px;">
-            <div class="game-lv" style="color:var(--yellow)">LEVEL 03 — ARCADE / 2D</div>
-            <h3>FLAPPY FLIGHT &amp; SPACE JUMP</h3>
-            <div class="tags"><span class="tag y">#Unity</span><span class="tag y">#C#</span><span class="tag y">#2D</span><span class="tag y">#Arcade</span><span class="tag y">#Physics</span></div>
-            <div class="pblk y"><span class="l">Concept</span><p>Two fast arcade titles — a Flappy Bird variant and a Doodle Jump-inspired vertical climber — built to master 2D physics, procedural generation, and clean game-feel tuning.</p></div>
-            <div class="pblk y"><span class="l">Built</span><p>Physics-based jumping, dynamic obstacle/platform spawning, collision detection, score tracking, procedural generation, and optimised UI for smooth cross-device play.</p></div>
-            <div class="pblk y"><span class="l">Role</span><p>Solo developer on both — design, code, and all Unity implementation.</p></div>
-        </div>
-      </article>
-
       <!-- ARDetect -->
-      <article class="game rv">
+      <article class="game flip rv">
         <div class="game-grid">
           <div>
             <div class="game-lv" style="color:var(--green)">LEVEL 04 — AR / AI</div>
             <h3>ARDETECT</h3>
             <div class="tags"><span class="tag g">#Unity</span><span class="tag g">#YOLOv8</span><span class="tag g">#AR</span><span class="tag g">#C#</span><span class="tag g">#OnDevice</span></div>
             <div class="pblk"><span class="l">Concept</span><p>A real-time AR object-detection app for engineering students — point the camera at a lab component and get an instant, offline identification with an in-app chatbot to learn more about it.</p></div>
-            <div class="pblk"><span class="l">Built</span><p>YOLOv8n model running fully offline via Unity Sentis, ARFoundation for the camera/AR layer, a calm UI system for detection overlays and session logs, and a hardcoded chatbot for component Q&A.</p></div>
-            <div class="pblk"><span class="l">Role</span><p>Full stack — UI/UX design in Figma, Unity ARFoundation pipeline, ONNX model integration, and all C# scripting.</p></div>
+            <div class="pblk"><span class="l">Built</span><p>Benchmarked four architectures (YOLOv8, MobileNet, EfficientDet, SSD) for accuracy/latency tradeoff. Shipped YOLOv8n running fully offline via Unity Sentis + ARFoundation, with a calm detection UI and session log.</p></div>
+            <div class="pblk"><span class="l">Role</span><p>Full pipeline — Python model training, ONNX export, Unity ARFoundation integration, UI/UX design in Figma, and all C# scripting.</p></div>
             <span class="tag g" style="margin-top:8px;display:inline-block;">GRADUATION PROJECT · 3.73 CGPA</span>
           </div>
           <div class="game-media">
@@ -335,10 +303,48 @@
           </div>
         </div>
       </article>
+
+      <!-- NPC AI Game Tool -->
+      <article class="game rv">
+        <div style="max-width:600px;">
+          <div class="game-lv" style="color:var(--cyan)">LEVEL 05 — AI / ML</div>
+          <h3>NPC AI GAME TOOL</h3>
+          <div class="tags"><span class="tag c">#Unity</span><span class="tag c">#C#</span><span class="tag c">#ONNX</span><span class="tag c">#Sentis</span><span class="tag c">#ML</span></div>
+          <div class="pblk c"><span class="l">Concept</span><p>A real-time in-engine NPC perception system — a working prototype for environmental awareness, running a trained neural network live inside Unity with zero external server dependency.</p></div>
+          <div class="pblk c"><span class="l">Built</span><p>Trained and exported a neural network to ONNX, ran live inference via Unity Sentis, extracted and normalized spatial features (size, position, distance) to classify objects in real time.</p></div>
+          <div class="pblk c"><span class="l">Role</span><p>Full pipeline — Python model training, ONNX export, Unity Sentis integration, and all C# runtime code.</p></div>
+        </div>
+      </article>
+
+      <!-- Ironveil Depths -->
+      <article class="game rv">
+        <div style="max-width:600px;">
+          <div class="game-lv" style="color:var(--orange)">LEVEL 06 — LLM / RPG</div>
+          <h3>IRONVEIL DEPTHS</h3>
+          <div class="tags"><span class="tag o">#JavaScript</span><span class="tag o">#LLM</span><span class="tag o">#OpenRouter</span><span class="tag o">#PromptEng</span><span class="tag o">#RPG</span></div>
+          <div class="pblk o"><span class="l">Concept</span><p>A browser-based text RPG where an LLM acts as game master — narrating outcomes in real time while emitting structured JSON to drive live UI state: health, inventory, gold, location.</p></div>
+          <div class="pblk o"><span class="l">Built</span><p>Multi-turn prompt and state management engineered so the model reliably tracks game history across long sessions. OpenRouter API integration with structured output parsing for real-time UI state.</p></div>
+          <div class="pblk o"><span class="l">Role</span><p>Solo developer — game design, prompt engineering, API integration, and all JavaScript implementation.</p></div>
+        </div>
+      </article>
+
+      <!-- Flappy Flight / Space Jump -->
+      <article class="game rv">
+        <div style="max-width:600px;">
+          <div class="game-lv" style="color:var(--yellow)">LEVEL 03 — ARCADE / 2D</div>
+          <h3>FLAPPY FLIGHT &amp; SPACE JUMP</h3>
+          <div class="tags"><span class="tag y">#Unity</span><span class="tag y">#C#</span><span class="tag y">#2D</span><span class="tag y">#Arcade</span><span class="tag y">#Physics</span></div>
+          <div class="pblk y"><span class="l">Concept</span><p>Two fast arcade titles — a Flappy Bird variant and a Doodle Jump-inspired vertical climber — built to master 2D physics, procedural generation, and clean game-feel tuning.</p></div>
+          <div class="pblk y"><span class="l">Built</span><p>Physics-based jumping, dynamic obstacle/platform spawning, collision detection, score tracking, procedural generation, and optimised UI for smooth cross-device play.</p></div>
+          <div class="pblk y"><span class="l">Role</span><p>Solo developer on both — design, code, and all Unity implementation.</p></div>
+        </div>
+      </article>
+      
     </div>
   </section>
 
-  <!-- ═══ SKILLS ═══ -->
+        
+  <!-- SKILLS -->
   <section id="skills">
     <div class="wrap">
       <div class="sec-head rv">
@@ -348,7 +354,7 @@
       <div class="skills-grid">
         <div class="skill-card rv">
           <div class="sno">// 01</div>
-          <h3>UNITY & C#</h3>
+          <h3>UNITY &amp; C#</h3>
           <div class="bar-row"><div class="bar-label"><span>Unity Engine</span><span>90%</span></div><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div></div>
           <div class="bar-row"><div class="bar-label"><span>C# Scripting</span><span>85%</span></div><div class="bar-track"><div class="bar-fill" style="width:85%"></div></div></div>
           <div class="bar-row"><div class="bar-label"><span>2D Systems</span><span>88%</span></div><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div></div>
@@ -364,17 +370,17 @@
         </div>
         <div class="skill-card y rv">
           <div class="sno">// 03</div>
-          <h3>TOOLS & TECH</h3>
-          <div class="bar-row"><div class="bar-label"><span>Blender (3D)</span><span>70%</span></div><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
-          <div class="bar-row"><div class="bar-label"><span>Git / GitHub</span><span>82%</span></div><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
+          <h3>TOOLS &amp; TECH</h3>
           <div class="bar-row"><div class="bar-label"><span>Python / ML</span><span>76%</span></div><div class="bar-track"><div class="bar-fill" style="width:76%"></div></div></div>
           <div class="bar-row"><div class="bar-label"><span>ONNX / Sentis</span><span>72%</span></div><div class="bar-track"><div class="bar-fill" style="width:72%"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>Blender (3D)</span><span>70%</span></div><div class="bar-track"><div class="bar-fill" style="width:70%"></div></div></div>
+          <div class="bar-row"><div class="bar-label"><span>Git / GitHub</span><span>82%</span></div><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══ ABOUT ═══ -->
+  <!-- ABOUT -->
   <section class="about" id="about">
     <div class="wrap">
       <div class="sec-head rv">
@@ -391,13 +397,13 @@
           </div>
           <div class="idle-tags">
             <span class="tag g">UET PESHAWAR</span>
-            <span class="tag c">CSE '26</span>
+            <span class="tag c">CSE GRAD '26</span>
             <span class="tag y">CGPA 3.73</span>
           </div>
         </div>
         <div class="about-text rv">
-          <p>I'm <b>Hoorish</b> — a Computer Systems Engineering graduate from UET Peshawar (CGPA 3.73) who builds games. I've shipped four Unity titles ranging from 3D stealth to 2D arcade, handling everything from game design and enemy AI to UI screens and physics tuning.</p>
-          <p>I also work at the intersection of <b>AI and games</b> — my graduation project is ARDetect, a real-time on-device object-detection AR app built in Unity with YOLOv8. When I'm building, I think about game-feel first: does it respond instantly? Does the player know what they did wrong? Does winning feel satisfying?</p>
+          <p>I'm <b>Hoorish</b> — a Computer Systems Engineering graduate from UET Peshawar (CGPA 3.73) who builds games. I've shipped projects ranging from 3D stealth with enemy AI to 2D arcade titles, in-engine ML inference, and an LLM-powered RPG — handling everything from game design and enemy behavior to UI screens and model integration.</p>
+          <p>I also work at the intersection of <b>AI and games</b> — my graduation project ARDetect benchmarks four detection architectures and runs YOLOv8 inference fully offline in Unity via Sentis. Currently an AI Intern at Welltime Ltd (UK) and a Research Assistant on procedural content generation via RL at UET Peshawar.</p>
           <div class="principle">
             <div class="pt">// DESIGN RULE</div>
             <p>Game-feel is a feature. The difference between a good and a great game is in the frame of delay you remove.</p>
@@ -411,7 +417,7 @@
     </div>
   </section>
 
-  <!-- ═══ CONTACT ═══ -->
+  <!-- CONTACT -->
   <section class="foot" id="contact">
     <div class="wrap">
       <div class="rv">
@@ -435,7 +441,6 @@
 </main>
 
 <script>
-  // nav scroll + spy
   const nav=document.getElementById('nav');
   const links=[...document.querySelectorAll('.nav-links a.lk')];
   window.addEventListener('scroll',()=>{ nav.classList.toggle('on',window.scrollY>8); },{passive:true});
@@ -443,12 +448,8 @@
     es.forEach(e=>{ if(e.isIntersecting) links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+e.target.id)); });
   },{rootMargin:'-45% 0px -50% 0px'});
   ['games','skills','about','contact'].forEach(id=>{ const s=document.getElementById(id); if(s) spy.observe(s); });
-
-  // reveal
   const io=new IntersectionObserver(es=>{ es.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);} }); },{threshold:.1,rootMargin:'0px 0px -8% 0px'});
   document.querySelectorAll('.rv').forEach(el=>io.observe(el));
-
-  // drag stickers
   document.querySelectorAll('.drag').forEach(el=>{
     let ox=0,oy=0,on=false;
     const down=e=>{ on=true; const p=e.touches?e.touches[0]:e; const r=el.getBoundingClientRect();
